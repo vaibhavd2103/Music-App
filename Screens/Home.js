@@ -14,6 +14,7 @@ import { TouchableOpacity } from "react-native";
 import { SearchModal } from "../components/SearchModal";
 import { LinearGradient } from "expo-linear-gradient";
 import MusicCatog from "../Screens/MusicCatog";
+import RecentlyPlayed from "../Screens/RecentlyPlayed";
 
 const Home = (props) => {
   const [isvisible, setIsVisible] = useState(false);
@@ -71,7 +72,7 @@ const Home = (props) => {
         </View>
       </View>
       <ScrollView style={{ flex: 1, width: "100%" }}>
-        <View style={{ width: "100%", height: 200 }}>
+        {/*<View style={{ width: "100%", height: 200 }}>
           <View style={{ width: "100%", padding: 5 }}>
             <Text
               style={{
@@ -122,9 +123,9 @@ const Home = (props) => {
             <MusicName name="Channa mereya" artist="Artist:ABC" />
             <MusicName name="Tum mile" artist="Unknown" />
           </ScrollView>
-        </View>
+        </View>*/}
         <MusicCatog navigation={props.navigation} />
-        <MusicCatog navigation={props.navigation} />
+        <RecentlyPlayed navigation={props.navigation} />
       </ScrollView>
     </View>
   );

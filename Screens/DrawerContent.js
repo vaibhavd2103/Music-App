@@ -54,10 +54,15 @@ export function DrawerContent(props) {
           <Drawer.Section style={styles.section}>
             <DrawerItem
               icon={({ color, size }) => (
-                <Ionicons name="musical-notes" color="grey" size={size} />
+                <Ionicons name="musical-notes" color="black" size={size} />
               )}
-              label="Music"
-              activeBackgroundColor="red"
+              label={() => (
+                <Text
+                  style={{ color: "black", fontWeight: "bold", fontSize: 16 }}
+                >
+                  Music
+                </Text>
+              )}
               pressColor="yellow"
               style={{}}
               onPress={() => {
@@ -66,9 +71,15 @@ export function DrawerContent(props) {
             />
             <DrawerItem
               icon={({ color, size }) => (
-                <Ionicons name="settings" color="grey" size={size} />
+                <Ionicons name="settings" color="black" size={size} />
               )}
-              label="Settings"
+              label={() => (
+                <Text
+                  style={{ color: "black", fontWeight: "bold", fontSize: 16 }}
+                >
+                  Settings
+                </Text>
+              )}
               pressColor="yellow"
               style={{}}
               onPress={() => {
