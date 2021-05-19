@@ -1,43 +1,34 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { ListItem } from "react-native-elements";
+
 import {
   FontAwesome,
   MaterialIcons,
   AntDesign,
 } from "react-native-vector-icons";
 
-const MusicName = ({ name, details }) => {
+const MusicName = ({ name, artist, albumUrl }) => {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          height: 60,
-          width: "5%",
-          justifyContent: "center",
-          alignItems: "center",
+      <Image
+        style={{ height: 100, width: 135, borderRadius: 10 }}
+        source={{
+          uri:
+            albumUrl ||
+            "https://i.pinimg.com/originals/d4/af/31/d4af318787315ed1398f51bde0caf405.png",
         }}
-      >
-        <FontAwesome name="music" size={24} color="black" />
-      </View>
-
-      <View style={{ width: "75%", paddingLeft: 15 }}>
-        <Text style={{ fontWeight: "700", fontSize: 17 }}>{name}</Text>
-        <Text style={{ color: "yellow" }}>{details}</Text>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          width: "20%",
-          justifyContent: "flex-end",
-        }}
-      >
+      />
+      <View style={{ width: "100%", flexDirection: "row" }}>
         <View>
-          <AntDesign name="heart" size={24} color="black" />
+          <Text style={{ fontWeight: "700", fontSize: 17 }}>{name}</Text>
+          <Text style={{ color: "yellow" }}>{artist}</Text>
         </View>
-        <View style={{ marginLeft: 10 }}>
-          <MaterialIcons name="delete" size={24} color="black" />
-        </View>
+        <AntDesign
+          name="heart"
+          size={24}
+          style={{ position: "absolute", top: 17, left: 115 }}
+        />
       </View>
     </View>
   );
@@ -47,13 +38,13 @@ export default MusicName;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: "column",
     backgroundColor: "grey",
-    height: 60,
-    width: "100%",
+    height: 150,
+    width: 150,
     alignItems: "center",
-    paddingHorizontal: 10,
-    borderBottomWidth: 0.2,
-    borderBottomColor: "#393e46",
+    borderRightWidth: 0.2,
+    borderRightColor: "#393e46",
+    padding: 5,
   },
 });

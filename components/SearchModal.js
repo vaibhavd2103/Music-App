@@ -1,6 +1,7 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { StyleSheet, Text, View, Modal } from "react-native";
+import { StyleSheet, Text, View, Modal, TextInput } from "react-native";
 
 const SearchModal = () => {
   return (
@@ -9,9 +10,18 @@ const SearchModal = () => {
       disabled={false}
       style={styles.container}
     >
-      <View style={styles.model}>
-        <Text>Modal There</Text>
-      </View>
+      <LinearGradient
+        colors={["orange", "yellow", "yellow", "orange"]}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.modal}
+      >
+        <TextInput
+          placeholder="Enter to search"
+          style={styles.search}
+          placeholderTextColor="yellow"
+        />
+      </LinearGradient>
     </TouchableOpacity>
   );
 };
@@ -20,13 +30,24 @@ export { SearchModal };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: "100%",
+    height: 60,
     justifyContent: "center",
     alignItems: "center",
-  },
-  model: {
     backgroundColor: "orange",
-    width: 400,
+  },
+  modal: {
     height: 60,
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 10,
+  },
+  search: {
+    width: "50%",
+    backgroundColor: "black",
+    height: 40,
+    borderRadius: 15,
+    paddingLeft: 10,
   },
 });

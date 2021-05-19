@@ -1,23 +1,37 @@
 import React, { useLayoutEffect, useState } from "react";
-import { StyleSheet, Text, View, TextInput, Modal } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Modal,
+  FlatList,
+} from "react-native";
 import MusicName from "../CustomList/MusicName";
 import { FontAwesome, AntDesign, Feather } from "react-native-vector-icons";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { SearchModal } from "../components/SearchModal";
+import { LinearGradient } from "expo-linear-gradient";
+import MusicCatog from "../Screens/MusicCatog";
 
-const Home = ({ navigation }) => {
-  /*const [isvisible, setIsVisible] = useState(false);
+const Home = (props) => {
+  const [isvisible, setIsVisible] = useState(false);
 
   const changeModelVisible = (bool) => {
     setIsVisible(bool);
-  };*/
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <LinearGradient
+        colors={["orange", "yellow", "yellow", "orange"]}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      >
         <View style={{ width: "10%" }}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
             <Feather name="menu" size={24} color="black" />
           </TouchableOpacity>
         </View>
@@ -34,9 +48,19 @@ const Home = ({ navigation }) => {
           </Text>
         </View>
         <View style={{ width: "10%", alignItems: "flex-end", paddingRight: 7 }}>
-          {/*<TouchableOpacity onPress={() => changeModelVisible(true)}>*/}
+          {/*<TouchableOpacity onPress={() => changeModelVisible(true)}>
+              <AntDesign name="search1" size={26} />
+            </TouchableOpacity>
+            <Modal
+              transparent={true}
+              animationType="fade"
+              visible={isvisible}
+              onRequestClose={() => changeModelVisible(false)}
+            >
+              <SearchModal />
+            </Modal>*/}
         </View>
-      </View>
+      </LinearGradient>
       <View style={styles.searchcontainer}>
         <View style={styles.searchbar}>
           <AntDesign name="search1" size={24} color="darkgrey" />
@@ -46,21 +70,61 @@ const Home = ({ navigation }) => {
           />
         </View>
       </View>
-      <ScrollView style={{ width: "100%" }}>
-        {/*<Modal
-          transparent={true}
-          animationType="slide"
-          visible={isvisible}
-          onRequestClose={() => changeModelVisible(false)}
-        >
-          <SearchModal />
-        </Modal>*/}
-        <MusicName name="Dil mere" details="Artist: Local train" />
-        <MusicName name="Dusk till down" details="Artist: Zyan" />
-        <MusicName name="Treat you better" details="Artist: Zyan" />
-        <MusicName name="Zindagi" details="Artist: Jubin Nautiyal" />
-        <MusicName name="Channa mereya" details="Artist:ABC" />
-        <MusicName name="Tum mile" details="Artist: Unknown" />
+      <ScrollView style={{ flex: 1, width: "100%" }}>
+        <View style={{ width: "100%", height: 200 }}>
+          <View style={{ width: "100%", padding: 5 }}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "white",
+                textAlign: "left",
+              }}
+            >
+              Recently Played
+            </Text>
+          </View>
+          <ScrollView style={{ width: "100%", height: 0 }} horizontal={true}>
+            <MusicName name="Dil mere" artist="Local train" />
+            <MusicName
+              name="Dusk till down"
+              artist="Zyan"
+              albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
+            />
+            <MusicName name="Treat you better" artist="Zyan" />
+            <MusicName name="Zindagi" artist="Jubin Nautiyal" />
+            <MusicName name="Channa mereya" artist="Artist:ABC" />
+            <MusicName name="Tum mile" artist="Unknown" />
+          </ScrollView>
+        </View>
+        <View style={{ width: "100%", height: 200 }}>
+          <View style={{ width: "100%", padding: 5 }}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "white",
+                textAlign: "left",
+              }}
+            >
+              Today's Pick
+            </Text>
+          </View>
+          <ScrollView style={{ width: "100%" }} horizontal={true}>
+            <MusicName name="Dil mere" artist="Local train" />
+            <MusicName
+              name="Dusk till down"
+              artist="Zyan"
+              albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
+            />
+            <MusicName name="Treat you better" artist="Zyan" />
+            <MusicName name="Zindagi" artist="Jubin Nautiyal" />
+            <MusicName name="Channa mereya" artist="Artist:ABC" />
+            <MusicName name="Tum mile" artist="Unknown" />
+          </ScrollView>
+        </View>
+        <MusicCatog navigation={props.navigation} />
+        <MusicCatog navigation={props.navigation} />
       </ScrollView>
     </View>
   );
@@ -99,3 +163,14 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
 });
+
+{
+  /*<Modal
+          transparent={true}
+          animationType="fade"
+          visible={isvisible}
+          onRequestClose={() => changeModelVisible(false)}
+        >
+          <SearchModal />
+        </Modal>*/
+}

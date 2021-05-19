@@ -11,8 +11,14 @@ import Home from "./Screens/Home";
 import Settings from "./Screens/Settings";
 import Notifications from "./Screens/Notifications";
 import Account from "./Screens/Account";
-import { MaterialCommunityIcons, Ionicons } from "react-native-vector-icons";
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  FontAwesome,
+} from "react-native-vector-icons";
 import { DrawerContent } from "./Screens/DrawerContent";
+import MyMusic from "./Screens/MyMusic";
+import Podcast from "./Screens/Podcast";
 
 const Stack = createStackNavigator();
 
@@ -67,12 +73,22 @@ function BottomTab() {
         }}
       />
       <Tab.Screen
-        name="Notifications"
-        component={Notifications}
+        name="Podcast"
+        component={Podcast}
+        options={{
+          tabBarColor: "darkgrey",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="podcast" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="My Music"
+        component={MyMusic}
         options={{
           tabBarColor: "#373a40",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="notifications" size={26} color={color} />
+            <FontAwesome name="music" size={26} color={color} />
           ),
         }}
       />

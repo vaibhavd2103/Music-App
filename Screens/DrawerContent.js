@@ -16,27 +16,39 @@ import {
   FontAwesome,
   Ionicons,
 } from "react-native-vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { TouchableOpacity } from "react-native";
 
 export function DrawerContent(props) {
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <LinearGradient
+      colors={["orange", "yellow", "yellow", "orange"]}
+      start={{ x: 1, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={{ flex: 1, backgroundColor: "yellow" }}
+    >
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userinfo}>
-            <View style={{ flexDirection: "row" }}>
-              <Avatar.Image
-                source={{
-                  uri: "https://wallpaperaccess.com/full/3102346.jpg",
-                }}
-                size={60}
-              />
-              <View style={{ marginLeft: 10 }}>
-                <Title style={{ color: "black" }}>Vaibhav Dange</Title>
-                <Caption style={{ fontSize: 15, color: "grey" }}>
-                  @vaibhavd2103
-                </Caption>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => props.navigation.navigate("Account")}
+            >
+              <View style={{ flexDirection: "row" }}>
+                <Avatar.Image
+                  source={{
+                    uri: "https://wallpaperaccess.com/full/3102346.jpg",
+                  }}
+                  size={60}
+                />
+                <View style={{ marginLeft: 10 }}>
+                  <Title style={{ color: "black" }}>Vaibhav Dange</Title>
+                  <Caption style={{ fontSize: 15, color: "grey" }}>
+                    @vaibhavd2103
+                  </Caption>
+                </View>
               </View>
-            </View>
+            </TouchableOpacity>
           </View>
 
           <Drawer.Section style={styles.section}>
@@ -63,36 +75,10 @@ export function DrawerContent(props) {
                 props.navigation.navigate("Settings");
               }}
             />
-            <DrawerItem
-              icon={({ color, size }) => (
-                <Ionicons name="notifications" color="grey" size={size} />
-              )}
-              label="Notifications"
-              pressColor="yellow"
-              style={{}}
-              onPress={() => {
-                props.navigation.navigate("Notifications");
-              }}
-            />
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
-      <Drawer.Section styles={styles.bottomDrawer}>
-        <DrawerItem
-          icon={({ color, size }) => (
-            <MaterialCommunityIcons
-              name="exit-to-app"
-              color={color}
-              size={size}
-            />
-          )}
-          label="SignOut"
-          onPress={() => {
-            props.navigation.navigate("Account");
-          }}
-        />
-      </Drawer.Section>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -105,8 +91,5 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingTop: 220,
-  },
-  bottomDrawer: {
-    marginBottom: 15,
   },
 });
