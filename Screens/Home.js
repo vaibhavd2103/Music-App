@@ -13,8 +13,10 @@ import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { SearchModal } from "../components/SearchModal";
 import { LinearGradient } from "expo-linear-gradient";
-import MusicCatog from "../Screens/MusicCatog";
-import RecentlyPlayed from "../Screens/RecentlyPlayed";
+import MusicCatog from "../Home/MusicCatog";
+import RecentlyPlayed from "../Home/RecentlyPlayed";
+import Trending from "../Home/Trending";
+import TodaysPick from "../Home/TodaysPick";
 
 const Home = (props) => {
   const [isvisible, setIsVisible] = useState(false);
@@ -126,6 +128,8 @@ const Home = (props) => {
         </View>*/}
         <MusicCatog navigation={props.navigation} />
         <RecentlyPlayed navigation={props.navigation} />
+        <Trending navigation={props.navigation} />
+        <TodaysPick navigation={props.navigation} />
       </ScrollView>
     </View>
   );

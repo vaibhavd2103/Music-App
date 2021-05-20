@@ -19,6 +19,13 @@ import {
 import { DrawerContent } from "./Screens/DrawerContent";
 import MyMusic from "./Screens/MyMusic";
 import Podcast from "./Screens/Podcast";
+import Equalizer from "./Settings/Equalizer";
+import LanguagePref from "./Settings/LanguagePref";
+import StreamingQuality from "./Settings/StreamingQuality";
+import DownloadQuality from "./Settings/DownloadQuality";
+import MyDownloads from "./MyMusic/MyDownloads";
+import MyFavs from "./MyMusic/MyFavs";
+import MyLibrary from "./MyMusic/MyLibrary";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +50,55 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={DrawerNavigator}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Equalizer"
+          component={Equalizer}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="LanguagePref"
+          component={LanguagePref}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="StreamingQuality"
+          component={StreamingQuality}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="DownloadQuality"
+          component={DownloadQuality}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="MyDownloads"
+          component={MyDownloads}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="MyFavs"
+          component={MyFavs}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="MyLibrary"
+          component={MyLibrary}
           options={{
             headerShown: false,
           }}
@@ -76,7 +132,7 @@ function BottomTab() {
         name="Podcast"
         component={Podcast}
         options={{
-          tabBarColor: "darkgrey",
+          tabBarColor: "grey",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="podcast" color={color} size={26} />
           ),
@@ -86,7 +142,7 @@ function BottomTab() {
         name="My Music"
         component={MyMusic}
         options={{
-          tabBarColor: "#373a40",
+          tabBarColor: "darkgrey",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="music" size={26} color={color} />
           ),

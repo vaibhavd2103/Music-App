@@ -22,43 +22,52 @@ import { TouchableOpacity } from "react-native";
 export function DrawerContent(props) {
   return (
     <LinearGradient
-      colors={["orange", "yellow", "yellow", "orange"]}
-      start={{ x: 1, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1, backgroundColor: "yellow" }}
+      colors={["black", "black", "black", "black"]}
+      start={{ x: 0, y: 1 }}
+      end={{ x: 1, y: 0 }}
+      style={{ flex: 1, backgroundColor: "yellow", margin: 0 }}
     >
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userinfo}>
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => props.navigation.navigate("Account")}
+            <LinearGradient
+              colors={["orange", "yellow", "yellow", "orange"]}
+              start={{ x: 1, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={{ flex: 1, backgroundColor: "yellow", padding: 10 }}
             >
-              <View style={{ flexDirection: "row" }}>
-                <Avatar.Image
-                  source={{
-                    uri: "https://wallpaperaccess.com/full/3102346.jpg",
-                  }}
-                  size={60}
-                />
-                <View style={{ marginLeft: 10 }}>
-                  <Title style={{ color: "black" }}>Vaibhav Dange</Title>
-                  <Caption style={{ fontSize: 15, color: "grey" }}>
-                    @vaibhavd2103
-                  </Caption>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => props.navigation.navigate("Account")}
+              >
+                <View style={{ flexDirection: "row" }}>
+                  <Avatar.Image
+                    source={{
+                      uri: "https://wallpaperaccess.com/full/3102346.jpg",
+                    }}
+                    size={60}
+                  />
+                  <View style={{ marginLeft: 10 }}>
+                    <Title style={{ color: "black", fontWeight: "400" }}>
+                      Vaibhav Dange
+                    </Title>
+                    <Caption style={{ fontSize: 15, color: "grey" }}>
+                      @vaibhavd2103
+                    </Caption>
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            </LinearGradient>
           </View>
 
           <Drawer.Section style={styles.section}>
             <DrawerItem
               icon={({ color, size }) => (
-                <Ionicons name="musical-notes" color="black" size={size} />
+                <Ionicons name="musical-notes" color="yellow" size={size} />
               )}
               label={() => (
                 <Text
-                  style={{ color: "black", fontWeight: "bold", fontSize: 16 }}
+                  style={{ color: "yellow", fontWeight: "300", fontSize: 17 }}
                 >
                   Music
                 </Text>
@@ -71,11 +80,11 @@ export function DrawerContent(props) {
             />
             <DrawerItem
               icon={({ color, size }) => (
-                <Ionicons name="settings" color="black" size={size} />
+                <Ionicons name="settings" color="yellow" size={size} />
               )}
               label={() => (
                 <Text
-                  style={{ color: "black", fontWeight: "bold", fontSize: 16 }}
+                  style={{ color: "yellow", fontWeight: "300", fontSize: 17 }}
                 >
                   Settings
                 </Text>
@@ -94,11 +103,10 @@ export function DrawerContent(props) {
 }
 
 const styles = StyleSheet.create({
-  drawerContent: {
-    padding: 10,
-  },
+  drawerContent: {},
   userinfo: {
     flexDirection: "row",
+    backgroundColor: "yellow",
   },
   section: {
     paddingTop: 220,

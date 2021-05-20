@@ -3,45 +3,46 @@ import { ImageBackground } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
+import { AntDesign } from "react-native-vector-icons";
 
-export class MusicCatog extends Component {
+export class RecentlyPlayed extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     let categories = [
       {
-        name: "Rock",
+        name: "Dusk Till Dawn",
         img: {
-          uri: "https://images.saymedia-content.com/.image/t_share/MTc0NTE3OTI5MzE5MDgxOTI5/songs-with-rock-in-the-title.png",
+          uri: "https://lh5.googleusercontent.com/proxy/6q29HXxx8RNDgLwGKkaKXEtaf616yJVk1XWxQoV-qH-lZwMhXilsKcmX9FSqWuAwCc-QYyWzT-kBnaywXxdMW0W9CBStnRyq1PcR22zwVc38QNB9X-eERIsAbLx5K6T4yIyXLQ5egM95Y7r8oFtim-p27A=s0-d",
         },
         id: "1",
       },
       {
-        name: "HipHop",
+        name: "Girls like you",
         img: {
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIDRpIe8HSeXtM2brY3lpSYr8OjpC72C3pLg&usqp=CAU",
+          uri: "https://static.parade.com/wp-content/uploads/2018/05/Girls-Like-You-HR.jpg",
         },
         id: "2",
       },
       {
-        name: "Jazz",
+        name: "Peaches",
         img: {
-          uri: "https://images-platform.99static.com//EpLOcAwxczL4I_KoW8gxhM3DsJ4=/211x237:1784x1810/fit-in/500x500/99designs-contests-attachments/78/78973/attachment_78973821",
+          uri: "https://upload.wikimedia.org/wikipedia/en/f/fd/Peaches_single.jpg",
         },
         id: "3",
       },
       {
-        name: "Classical",
+        name: "Talking to the...",
         img: {
-          uri: "https://images.thrillophilia.com/image/upload/s--PAtBIhcq--/c_fill,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/141/705/original/1548157147_3.jpg.jpg?1548157147",
+          uri: "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/ad1875717434f98e6f616e3ea8cbe0bf_500x500.jpg",
         },
         id: "4",
       },
       {
-        name: "Metal",
+        name: "Kabira",
         img: {
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeyckRVilur85edy_bTLKYpZf6yhMAitnYBw&usqp=CAU",
+          uri: "http://img.xcitefun.net/users/2013/03/320979,xcitefun-kabira-song.jpg",
         },
         id: "5",
       },
@@ -56,21 +57,30 @@ export class MusicCatog extends Component {
             paddingLeft: 5,
           }}
         >
-          Categories
+          Recently Played
         </Text>
         <FlatList
+          showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
           data={categories}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
               <Surface style={styles.surface}>
-                <Image
-                  style={{ width: 105, height: 105, borderRadius: 10 }}
+                <ImageBackground
+                  imageStyle={{ borderRadius: 10 }}
+                  style={{
+                    width: 120,
+                    height: 120,
+                    justifyContent: "flex-end",
+                    padding: 7,
+                  }}
                   source={item.img}
-                />
+                >
+                  <AntDesign name="play" size={24} color="darkgrey" />
+                </ImageBackground>
                 <Text
-                  style={{ color: "white", fontSize: 18, fontWeight: "700" }}
+                  style={{ color: "white", fontSize: 15, fontWeight: "600" }}
                 >
                   {item.name}
                 </Text>
@@ -85,14 +95,13 @@ export class MusicCatog extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 175,
+    height: 190,
     width: "100%",
-    marginBottom: 20,
   },
   surface: {
-    width: 120,
+    width: 130,
     padding: 5,
-    backgroundColor: "#2d2d2d",
+    backgroundColor: "black",
     margin: 3,
     justifyContent: "center",
     alignItems: "center",
@@ -100,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MusicCatog;
+export default RecentlyPlayed;
