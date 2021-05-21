@@ -8,7 +8,12 @@ import {
   FlatList,
 } from "react-native";
 import MusicName from "../CustomList/MusicName";
-import { FontAwesome, AntDesign, Feather } from "react-native-vector-icons";
+import {
+  FontAwesome,
+  AntDesign,
+  Feather,
+  MaterialIcons,
+} from "react-native-vector-icons";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { SearchModal } from "../components/SearchModal";
@@ -66,11 +71,18 @@ const Home = (props) => {
       </LinearGradient>
       <View style={styles.searchcontainer}>
         <View style={styles.searchbar}>
-          <AntDesign name="search1" size={24} color="darkgrey" />
-          <TextInput
-            placeholder="Search"
-            style={{ paddingLeft: 5, width: "90%" }}
-          />
+          <View style={{ width: "90%", flexDirection: "row" }}>
+            <AntDesign name="search1" size={24} color="darkgrey" />
+            <TextInput
+              placeholder="Search"
+              style={{ paddingLeft: 5, width: "80%" }}
+            />
+          </View>
+          <View
+            style={{ width: "10%", alignItems: "flex-end", paddingRight: 5 }}
+          >
+            <MaterialIcons name="keyboard-voice" size={28} color="darkgrey" />
+          </View>
         </View>
       </View>
       <ScrollView style={{ flex: 1, width: "100%" }}>

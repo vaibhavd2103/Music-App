@@ -1,10 +1,13 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
-import { Ionicons, FontAwesome, AntDesign } from "react-native-vector-icons";
-import MyDownloads from "../MyMusic/MyDownloads";
-import MyFavs from "../MyMusic/MyFavs";
-import MyLibrary from "../MyMusic/MyLibrary";
+import {
+  Ionicons,
+  FontAwesome,
+  AntDesign,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "react-native-vector-icons";
 
 const MyMusic = (props) => {
   return (
@@ -23,7 +26,11 @@ const MyMusic = (props) => {
       >
         <View style={styles.list}>
           <View style={{ width: "10%", justifyContent: "center" }}>
-            <Ionicons name="play-circle-outline" size={37} color="black" />
+            <MaterialCommunityIcons
+              name="download-box"
+              size={35}
+              color="black"
+            />
           </View>
           <View
             style={{
@@ -52,8 +59,10 @@ const MyMusic = (props) => {
         style={{ width: "100%", height: 50 }}
       >
         <View style={styles.list}>
-          <View style={{ width: "10%", justifyContent: "center" }}>
-            <Ionicons name="play-circle-outline" size={37} color="black" />
+          <View
+            style={{ width: "10%", justifyContent: "center", paddingLeft: 4 }}
+          >
+            <FontAwesome name="heartbeat" size={28} color="black" />
           </View>
           <View
             style={{
@@ -84,8 +93,10 @@ const MyMusic = (props) => {
         style={{ width: "100%", height: 50 }}
       >
         <View style={styles.list}>
-          <View style={{ width: "10%", justifyContent: "center" }}>
-            <Ionicons name="play-circle-outline" size={37} color="black" />
+          <View
+            style={{ width: "10%", justifyContent: "center", paddingLeft: 1 }}
+          >
+            <MaterialIcons name="my-library-music" size={32} color="black" />
           </View>
           <View
             style={{
