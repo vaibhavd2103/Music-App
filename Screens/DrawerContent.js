@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import {
   Avatar,
@@ -15,9 +15,11 @@ import {
   MaterialCommunityIcons,
   FontAwesome,
   Ionicons,
+  MaterialIcons,
 } from "react-native-vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity } from "react-native";
+import { ProgressBar, Colors } from "react-native-paper";
 
 export function DrawerContent(props) {
   return (
@@ -28,7 +30,9 @@ export function DrawerContent(props) {
       style={{ flex: 1, backgroundColor: "yellow", margin: 0 }}
     >
       <DrawerContentScrollView {...props}>
+        {/* -------------------------Drawer Content-------------------------------- */}
         <View style={styles.drawerContent}>
+          {/* -------------------------User Info-------------------------------- */}
           <View style={styles.userinfo}>
             <LinearGradient
               colors={["orange", "yellow", "yellow", "orange"]}
@@ -59,8 +63,9 @@ export function DrawerContent(props) {
               </TouchableOpacity>
             </LinearGradient>
           </View>
-
+          {/* -------------------------Drawer Section-------------------------------- */}
           <Drawer.Section style={styles.section}>
+            {/* -------------------------Music-------------------------------- */}
             <DrawerItem
               icon={({ color, size }) => (
                 <Ionicons name="musical-notes" color="yellow" size={size} />
@@ -78,6 +83,7 @@ export function DrawerContent(props) {
                 props.navigation.navigate("Home");
               }}
             />
+            {/* -------------------------Settings-------------------------------- */}
             <DrawerItem
               icon={({ color, size }) => (
                 <Ionicons name="settings" color="yellow" size={size} />
@@ -95,6 +101,54 @@ export function DrawerContent(props) {
                 props.navigation.navigate("Settings");
               }}
             />
+            {/* -------------------------Storage-------------------------------- */}
+            <DrawerItem
+              icon={({ color, size }) => (
+                <MaterialIcons name="storage" color="yellow" size={size} />
+              )}
+              label={() => (
+                <Text
+                  style={{ color: "yellow", fontWeight: "300", fontSize: 17 }}
+                >
+                  Storage
+                </Text>
+              )}
+              pressColor="yellow"
+              style={{}}
+              onPress={() => {}}
+            />
+            {/* -------------------------Progress Bar-------------------------------- */}
+            <ProgressBar
+              progress={0.2}
+              color={"yellow"}
+              style={{ width: "70%", marginLeft: 20 }}
+            />
+            <View style={{ flexDirection: "row", width: "100%" }}>
+              <Text style={{ color: "yellow", marginLeft: 20, fontSize: 14 }}>
+                24.1 GB
+              </Text>
+              <Text style={{ color: "#616100", marginLeft: 60, fontSize: 14 }}>
+                101.8 GB free
+              </Text>
+            </View>
+            {/* -------------------------Clear cache-------------------------------- */}
+            <DrawerItem
+              icon={({ color, size }) => (
+                <MaterialCommunityIcons name="broom" color="yellow" size={26} />
+              )}
+              label={() => (
+                <Text
+                  style={{ color: "yellow", fontWeight: "300", fontSize: 17 }}
+                >
+                  Clear cache
+                </Text>
+              )}
+              pressColor="yellow"
+              style={{}}
+              onPress={() => {
+                Alert.alert("Cleared cache");
+              }}
+            />
           </Drawer.Section>
         </View>
       </DrawerContentScrollView>
@@ -109,6 +163,7 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow",
   },
   section: {
-    paddingTop: 220,
+    paddingTop: 180,
   },
+  clearcache: {},
 });
