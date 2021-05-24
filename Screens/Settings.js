@@ -87,7 +87,7 @@ const Settings = (props) => {
               <MaterialCommunityIcons
                 name="quality-high"
                 size={26}
-                color="white"
+                color="grey"
                 style={{ padding: 5 }}
               />
             </TouchableOpacity>
@@ -103,7 +103,7 @@ const Settings = (props) => {
               <MaterialCommunityIcons
                 name="quality-low"
                 size={26}
-                color="white"
+                color="grey"
                 style={{ paddingLeft: 5 }}
               />
             </TouchableOpacity>
@@ -131,7 +131,7 @@ const Settings = (props) => {
               <MaterialCommunityIcons
                 name="quality-medium"
                 size={26}
-                color="white"
+                color="grey"
                 style={{ padding: 5 }}
               />
             </TouchableOpacity>
@@ -139,7 +139,7 @@ const Settings = (props) => {
               <MaterialCommunityIcons
                 name="quality-low"
                 size={26}
-                color="white"
+                color="grey"
                 style={{ paddingLeft: 5 }}
               />
             </TouchableOpacity>
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   list: {
-    backgroundColor: "black",
+    backgroundColor: "#111111",
     height: 60,
     width: "100%",
     padding: 5,
