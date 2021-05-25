@@ -51,6 +51,9 @@ const Settings = (props) => {
               <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
                 Language Preference
               </Text>
+              <Text style={{ color: "grey", fontSize: 13 }}>
+                Set your language
+              </Text>
             </View>
             <View style={styles.settingicon20}>
               <FontAwesome5 name="language" size={24} color="white" />
@@ -68,6 +71,9 @@ const Settings = (props) => {
               <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
                 Equalizer
               </Text>
+              <Text style={{ color: "grey", fontSize: 13 }}>
+                Manipulate frequencies
+              </Text>
             </View>
             <View style={styles.settingicon20}>
               <MaterialIcons name="equalizer" size={28} color="white" />
@@ -80,6 +86,9 @@ const Settings = (props) => {
           <View style={styles.settingname50}>
             <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
               Streaming Quality
+            </Text>
+            <Text style={{ color: "grey", fontSize: 13 }}>
+              Set your streaming quality
             </Text>
           </View>
           <View style={styles.settingicon50}>
@@ -116,6 +125,9 @@ const Settings = (props) => {
           <View style={styles.settingname50}>
             <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
               Download Quality
+            </Text>
+            <Text style={{ color: "grey", fontSize: 13 }}>
+              Set your download quality
             </Text>
           </View>
           <View style={styles.settingicon50}>
@@ -192,6 +204,9 @@ const Settings = (props) => {
           <View style={styles.settingname80}>
             <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
               Data usage warning
+            </Text>
+            <Text style={{ color: "grey", fontSize: 13 }}>
+              Warns about excess data usage
             </Text>
           </View>
           <View
@@ -285,6 +300,7 @@ const Settings = (props) => {
               <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
                 Customer Support
               </Text>
+              <Text style={{ color: "grey", fontSize: 13 }}>Contact Us</Text>
             </View>
             <View style={styles.settingicon20}>
               <AntDesign name="customerservice" size={26} color="white" />
@@ -297,6 +313,9 @@ const Settings = (props) => {
             <View style={styles.settingname80}>
               <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
                 Updates
+              </Text>
+              <Text style={{ color: "grey", fontSize: 13 }}>
+                Check for updates
               </Text>
             </View>
             <View style={styles.settingicon20}>
@@ -324,7 +343,7 @@ const styles = StyleSheet.create({
   },
   list: {
     backgroundColor: "#111111",
-    height: 60,
+    height: 70,
     width: "100%",
     padding: 5,
     flexDirection: "row",

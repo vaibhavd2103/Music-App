@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ImageBackground } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
@@ -66,25 +67,27 @@ export class RecentlyPlayed extends Component {
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <Surface style={styles.surface}>
-                <ImageBackground
-                  imageStyle={{ borderRadius: 10 }}
-                  style={{
-                    width: 120,
-                    height: 120,
-                    justifyContent: "flex-end",
-                    padding: 7,
-                  }}
-                  source={item.img}
-                >
-                  <AntDesign name="play" size={24} color="darkgrey" />
-                </ImageBackground>
-                <Text
-                  style={{ color: "white", fontSize: 15, fontWeight: "600" }}
-                >
-                  {item.name}
-                </Text>
-              </Surface>
+              <TouchableOpacity>
+                <Surface style={styles.surface}>
+                  <ImageBackground
+                    imageStyle={{ borderRadius: 10 }}
+                    style={{
+                      width: 120,
+                      height: 120,
+                      justifyContent: "flex-end",
+                      padding: 7,
+                    }}
+                    source={item.img}
+                  >
+                    <AntDesign name="play" size={24} color="darkgrey" />
+                  </ImageBackground>
+                  <Text
+                    style={{ color: "white", fontSize: 15, fontWeight: "600" }}
+                  >
+                    {item.name}
+                  </Text>
+                </Surface>
+              </TouchableOpacity>
             );
           }}
         />

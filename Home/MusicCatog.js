@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ImageBackground } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
@@ -58,6 +59,7 @@ export class MusicCatog extends Component {
         >
           Categories
         </Text>
+
         <FlatList
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
@@ -65,17 +67,23 @@ export class MusicCatog extends Component {
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <Surface style={styles.surface}>
-                <Image
-                  style={{ width: 105, height: 105, borderRadius: 10 }}
-                  source={item.img}
-                />
-                <Text
-                  style={{ color: "white", fontSize: 18, fontWeight: "700" }}
-                >
-                  {item.name}
-                </Text>
-              </Surface>
+              <TouchableOpacity>
+                <Surface style={styles.surface}>
+                  <Image
+                    style={{ width: 105, height: 105, borderRadius: 10 }}
+                    source={item.img}
+                  />
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 18,
+                      fontWeight: "700",
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                </Surface>
+              </TouchableOpacity>
             );
           }}
         />
