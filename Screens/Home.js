@@ -15,7 +15,7 @@ import {
   MaterialIcons,
 } from "react-native-vector-icons";
 import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, ActivityIndicator } from "react-native";
 import { SearchModal } from "../components/SearchModal";
 import { LinearGradient } from "expo-linear-gradient";
 import MusicCatog from "../Home/MusicCatog";
@@ -30,8 +30,17 @@ const Home = (props) => {
     setIsVisible(bool);
   };
 
+  const [isLoading, setLoading] = useState(true);
+
   return (
     <View style={styles.container}>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <View>
+          <Text style={{ color: "yellow" }}>Hey there!</Text>
+        </View>
+      )}
       <LinearGradient
         colors={["orange", "yellow", "yellow", "orange"]}
         start={{ x: 0, y: 1 }}
