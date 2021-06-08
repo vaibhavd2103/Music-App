@@ -34,13 +34,6 @@ const Home = (props) => {
 
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <View>
-          <Text style={{ color: "yellow" }}>Hey there!</Text>
-        </View>
-      )}
       <LinearGradient
         colors={["orange", "yellow", "yellow", "orange"]}
         start={{ x: 0, y: 1 }}

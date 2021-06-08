@@ -3,6 +3,7 @@ import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import MusicName from "../CustomList/MusicName";
 import { Ionicons } from "react-native-vector-icons";
+import DownloadList from "../CustomList/DownloadList";
 
 const MyDownloads = (props) => {
   return (
@@ -44,26 +45,7 @@ const MyDownloads = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView style={{ width: "100%" }}>
-        <TouchableOpacity>
-          <MusicName name="Dil mere" artist="Local train" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MusicName name="Dusk till down" artist="Zyan" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MusicName name="Treat you better" artist="Zyan" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MusicName name="Zindagi" artist="Jubin Nautiyal" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MusicName name="Channa mereya" artist="Artist:ABC" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <MusicName name="Tum mile" artist="Unknown" />
-        </TouchableOpacity>
-      </ScrollView>
+      <DownloadList navigation={props.navigation} />
     </View>
   );
 };

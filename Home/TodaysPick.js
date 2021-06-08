@@ -22,6 +22,7 @@ export default function TodaysPick(props) {
         uri: "https://static.parade.com/wp-content/uploads/2018/05/Girls-Like-You-HR.jpg",
       },
       id: "2",
+      artist: "Maroon 5",
     },
     {
       name: "Peaches",
@@ -29,6 +30,7 @@ export default function TodaysPick(props) {
         uri: "https://upload.wikimedia.org/wikipedia/en/f/fd/Peaches_single.jpg",
       },
       id: "3",
+      artist: "Unknown",
     },
     {
       name: "Talking to the...",
@@ -36,6 +38,7 @@ export default function TodaysPick(props) {
         uri: "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/ad1875717434f98e6f616e3ea8cbe0bf_500x500.jpg",
       },
       id: "4",
+      artist: "Bruno Mars",
     },
     {
       name: "Kabira",
@@ -43,6 +46,7 @@ export default function TodaysPick(props) {
         uri: "http://img.xcitefun.net/users/2013/03/320979,xcitefun-kabira-song.jpg",
       },
       id: "5",
+      artist: "Arjit Singh",
     },
   ]);
   return (
