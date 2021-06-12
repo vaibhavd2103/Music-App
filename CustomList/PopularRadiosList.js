@@ -6,7 +6,7 @@ import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 import { AntDesign } from "react-native-vector-icons";
 
-export default function TodaysPick(props) {
+export default function PopularRadiosList(props) {
   const [songname, setSongname] = useState([
     {
       name: "Dusk Till Dawn",
@@ -56,10 +56,10 @@ export default function TodaysPick(props) {
           fontSize: 20,
           fontWeight: "bold",
           color: "white",
-          paddingLeft: 5,
+          paddingLeft: 15,
         }}
       >
-        TodaysPick
+        Popular Radios
       </Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
@@ -72,20 +72,40 @@ export default function TodaysPick(props) {
               onPress={() => props.navigation.navigate("MusicPlayer", { item })}
             >
               <Surface style={styles.surface}>
-                <ImageBackground
-                  imageStyle={{ borderRadius: 10 }}
+                <View
                   style={{
-                    width: 120,
-                    height: 120,
-                    justifyContent: "flex-end",
-                    padding: 7,
+                    width: 125,
+                    height: 125,
+                    elevation: 20,
+                    backgroundColor: "white",
+                    borderRadius: 200,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    shadowOffset: {
+                      width: 20,
+                      height: 20,
+                    },
+                    shadowOpacity: 1,
                   }}
-                  source={item.img}
                 >
-                  <AntDesign name="play" size={24} color="darkgrey" />
-                </ImageBackground>
+                  <ImageBackground
+                    imageStyle={{ borderRadius: 200 }}
+                    style={{
+                      width: 120,
+                      height: 120,
+                      justifyContent: "flex-end",
+                      padding: 7,
+                    }}
+                    source={item.img}
+                  ></ImageBackground>
+                </View>
                 <Text
-                  style={{ color: "white", fontSize: 15, fontWeight: "600" }}
+                  style={{
+                    color: "white",
+                    fontSize: 16,
+                    fontWeight: "700",
+                    marginTop: 5,
+                  }}
                 >
                   {item.name}
                 </Text>
@@ -107,7 +127,7 @@ const styles = StyleSheet.create({
   surface: {
     width: 130,
     padding: 5,
-    backgroundColor: "black",
+    backgroundColor: "transparent",
     margin: 3,
     justifyContent: "center",
     alignItems: "center",

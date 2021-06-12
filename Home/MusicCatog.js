@@ -17,6 +17,48 @@ export class MusicCatog extends Component {
           uri: "https://images.saymedia-content.com/.image/t_share/MTc0NTE3OTI5MzE5MDgxOTI5/songs-with-rock-in-the-title.png",
         },
         id: "1",
+        data: [
+          {
+            name: "Dusk Till Dawn",
+            img: {
+              uri: "https://lh5.googleusercontent.com/proxy/6q29HXxx8RNDgLwGKkaKXEtaf616yJVk1XWxQoV-qH-lZwMhXilsKcmX9FSqWuAwCc-QYyWzT-kBnaywXxdMW0W9CBStnRyq1PcR22zwVc38QNB9X-eERIsAbLx5K6T4yIyXLQ5egM95Y7r8oFtim-p27A=s0-d",
+            },
+            id: "1",
+            artist: "Zyan",
+          },
+          {
+            name: "Girls like you",
+            img: {
+              uri: "https://static.parade.com/wp-content/uploads/2018/05/Girls-Like-You-HR.jpg",
+            },
+            id: "2",
+            artist: "Maroon 5",
+          },
+          {
+            name: "Peaches",
+            img: {
+              uri: "https://upload.wikimedia.org/wikipedia/en/f/fd/Peaches_single.jpg",
+            },
+            id: "3",
+            artist: "Unknown",
+          },
+          {
+            name: "Talking to the...",
+            img: {
+              uri: "https://dev-resws-hungamatech-com.storage.googleapis.com/featured_content/ad1875717434f98e6f616e3ea8cbe0bf_500x500.jpg",
+            },
+            id: "4",
+            artist: "Bruno Mars",
+          },
+          {
+            name: "Kabira",
+            img: {
+              uri: "http://img.xcitefun.net/users/2013/03/320979,xcitefun-kabira-song.jpg",
+            },
+            id: "5",
+            artist: "Arjit Singh",
+          },
+        ],
       },
       {
         name: "HipHop",
@@ -67,7 +109,11 @@ export class MusicCatog extends Component {
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate("MusicCatogList", item)
+                }
+              >
                 <Surface style={styles.surface}>
                   <Image
                     style={{ width: 105, height: 105, borderRadius: 10 }}

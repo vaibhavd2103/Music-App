@@ -22,6 +22,8 @@ import MusicCatog from "../Home/MusicCatog";
 import RecentlyPlayed from "../Home/RecentlyPlayed";
 import Trending from "../Home/Trending";
 import TodaysPick from "../Home/TodaysPick";
+import CategoryCarousel from "../CustomList/CategoryCarousel";
+import { ProgressViewIOSComponent } from "react-native";
 
 const Home = (props) => {
   const [isvisible, setIsVisible] = useState(false);
@@ -87,7 +89,7 @@ const Home = (props) => {
           </View>
         </View>
       </View>
-      <ScrollView style={{ flex: 1, width: "100%" }}>
+      <ScrollView style={{ width: "100%" }}>
         {/*<View style={{ width: "100%", height: 200 }}>
           <View style={{ width: "100%", padding: 5 }}>
             <Text
@@ -140,7 +142,7 @@ const Home = (props) => {
             <MusicName name="Tum mile" artist="Unknown" />
           </ScrollView>
         </View>*/}
-        <MusicCatog navigation={props.navigation} />
+        <CategoryCarousel navigation={props.navigation} />
         <RecentlyPlayed navigation={props.navigation} />
         <Trending navigation={props.navigation} />
         <TodaysPick navigation={props.navigation} />

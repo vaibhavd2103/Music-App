@@ -30,6 +30,8 @@ import Navigation from "./Settings/Navigation";
 import CustomerSupport from "./Settings/HelpAndSupport/CustomerSupport";
 import Updates from "./Settings/HelpAndSupport/Updates";
 import MusicPlayer from "./Screens/MusicPlayer";
+import MusicCatogList from "./Screens/MusicCatogList";
+import CategoryCarousel from "./CustomList/CategoryCarousel";
 
 const Stack = createStackNavigator();
 
@@ -135,6 +137,20 @@ export default function App() {
             headerShown: false,
           }}
         />
+        <Stack.Screen
+          name="MusicCatogList"
+          component={MusicCatogList}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="CategoryCarousel"
+          component={CategoryCarousel}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -164,7 +180,7 @@ function BottomTab() {
         name="Podcast"
         component={Podcast}
         options={{
-          tabBarColor: "grey",
+          tabBarColor: "black",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="podcast" color={color} size={26} />
           ),
@@ -174,7 +190,7 @@ function BottomTab() {
         name="My Music"
         component={MyMusic}
         options={{
-          tabBarColor: "darkgrey",
+          tabBarColor: "black",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="music" size={26} color={color} />
           ),

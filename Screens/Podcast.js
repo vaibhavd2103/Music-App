@@ -1,12 +1,32 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import CarouselPodcast from "../CustomList/CarouselPodcast";
+import PodcastCarousel from "../CustomList/PodcastCarousel";
+import { LinearGradient } from "expo-linear-gradient";
+import PopularRadiosList from "../CustomList/PopularRadiosList";
 
 const Podcast = (props) => {
   return (
-    <View style={styles.container}>
-      <CarouselPodcast />
-    </View>
+    <LinearGradient
+      colors={[
+        "yellow",
+        "orange",
+        "orange",
+        "#FF7A00",
+        "#CF6300",
+        "#894200",
+        "#572A00",
+        "black",
+      ]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}
+    >
+      <Text style={{ fontSize: 30, color: "white", fontWeight: "bold" }}>
+        Podcasts
+      </Text>
+      <PodcastCarousel />
+      <PopularRadiosList navigation={props.navigation} />
+    </LinearGradient>
   );
 };
 
