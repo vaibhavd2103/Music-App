@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import {
@@ -20,8 +20,28 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity } from "react-native";
 import { ProgressBar, Colors } from "react-native-paper";
+import { auth, db } from "../Config";
 
-export function DrawerContent(props) {
+export function DrawerContent({ navigation }) {
+  const [userData, setUserData] = useState([]);
+
+  const getUser = async () => {
+    await db
+      .collection("users")
+      .doc(auth.currentUser.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setUserData(doc.data());
+          // console.log(doc.data());
+        }
+      });
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <LinearGradient
       colors={["black", "black", "black", "black"]}
@@ -29,7 +49,7 @@ export function DrawerContent(props) {
       end={{ x: 1, y: 0 }}
       style={{ flex: 1, backgroundColor: "yellow", margin: 0 }}
     >
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...{ navigation }}>
         {/* -------------------------Drawer Content-------------------------------- */}
         <View style={styles.drawerContent}>
           {/* -------------------------User Info-------------------------------- */}
@@ -42,7 +62,7 @@ export function DrawerContent(props) {
             >
               <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => props.navigation.navigate("Account")}
+                onPress={() => navigation.navigate("Account")}
               >
                 <View style={{ flexDirection: "row" }}>
                   <Avatar.Image
@@ -53,10 +73,10 @@ export function DrawerContent(props) {
                   />
                   <View style={{ marginLeft: 10 }}>
                     <Title style={{ color: "black", fontWeight: "400" }}>
-                      Vaibhav Dange
+                      {userData.name}
                     </Title>
                     <Caption style={{ fontSize: 15, color: "grey" }}>
-                      @vaibhavd2103
+                      {userData.email}
                     </Caption>
                   </View>
                 </View>
@@ -80,7 +100,7 @@ export function DrawerContent(props) {
               pressColor="yellow"
               style={{}}
               onPress={() => {
-                props.navigation.navigate("Home");
+                navigation.navigate("Home");
               }}
             />
             {/* -------------------------Settings-------------------------------- */}
@@ -98,7 +118,7 @@ export function DrawerContent(props) {
               pressColor="yellow"
               style={{}}
               onPress={() => {
-                props.navigation.navigate("Settings");
+                navigation.navigate("Settings");
               }}
             />
             {/* -------------------------Storage-------------------------------- */}

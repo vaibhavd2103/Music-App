@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "black",
+    paddingTop: 40,
   },
   header: {
     width: "100%",

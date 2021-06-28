@@ -19,6 +19,17 @@ import { ScrollView } from "react-native";
 import { TouchableOpacity, ActivityIndicator } from "react-native";
 
 export default function DownloadList(props) {
+  const [color, setColor] = useState("black");
+
+  const [status, setStatus] = useState();
+  // const likesong = () => {
+  //   if (status === true && color === "red") {
+  //     setColor("black") && setStatus(false);
+  //   } else {
+  //     setColor("red") && setStatus(true);
+  //   }
+  // };
+
   const [songname, setSongname] = useState([
     {
       name: "Dusk Till Dawn",
@@ -27,6 +38,7 @@ export default function DownloadList(props) {
       },
       id: "1",
       artist: "Zyan",
+      liked: false,
     },
     {
       name: "Girls like you",
@@ -35,6 +47,7 @@ export default function DownloadList(props) {
       },
       id: "2",
       artist: "Maroon 5",
+      liked: false,
     },
     {
       name: "Peaches",
@@ -43,6 +56,7 @@ export default function DownloadList(props) {
       },
       id: "3",
       artist: "Unknown",
+      liked: false,
     },
     {
       name: "Talking to the...",
@@ -52,6 +66,7 @@ export default function DownloadList(props) {
       id: "4",
       artist: "Bruno Mars",
       category: "Podcast",
+      liked: false,
     },
     {
       name: "Kabira",
@@ -61,6 +76,7 @@ export default function DownloadList(props) {
       id: "5",
       artist: "Arjit Singh",
       category: "Account",
+      liked: false,
     },
   ]);
 
@@ -111,7 +127,20 @@ export default function DownloadList(props) {
                 }}
               >
                 {/* Icon */}
-                <Ionicons name="ios-heart" size={24} color="black" />
+                <Ionicons
+                  name="ios-heart"
+                  size={24}
+                  color={color}
+                  onPress={() => {
+                    if (item.liked === true) {
+                      setColor("black");
+                      console.log(setStatus);
+                    } else {
+                      setColor("red");
+                      console.log(setStatus);
+                    }
+                  }}
+                />
               </View>
             </TouchableOpacity>
           );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -14,8 +14,43 @@ import {
   MaterialCommunityIcons,
 } from "react-native-vector-icons";
 import Slider from "@react-native-community/slider";
+import { Audio } from "expo-av";
 
 const MusicPlayer = ({ navigation, route }) => {
+  const [sound, setSound] = useState();
+
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("../assets/minimal.mp3")
+    );
+
+    setSound(sound);
+
+    console.log("Playing Sound");
+    (await sound.playAsync()) && sound.setVolumeAsync(1);
+  }
+
+  // useEffect(() => {
+  //   return sound
+  //     ? () => {
+  //         console.log("Unloading Sound");
+  //         sound.pauseAsync();
+  //       }
+  //     : undefined;
+  // }, [sound]);
+
+  const [status, setStatus] = useState("play");
+
+  const play_pause = () => {
+    if (status === "play") {
+      setStatus("pause"), playSound();
+    } else {
+      setStatus("play"), console.log("Unloading Sound");
+      sound.pauseAsync();
+    }
+  };
+
   const { item } = route.params;
 
   return (
@@ -141,8 +176,8 @@ const MusicPlayer = ({ navigation, route }) => {
             </TouchableOpacity>
           </View>
           <View style={styles.icon}>
-            <TouchableOpacity style={styles.playpause}>
-              <Ionicons name="pause" size={35} color="#434b56" />
+            <TouchableOpacity style={styles.playpause} onPress={play_pause}>
+              <Ionicons name={status} size={35} color="#434b56" />
             </TouchableOpacity>
           </View>
           <View
@@ -153,7 +188,7 @@ const MusicPlayer = ({ navigation, route }) => {
               paddingRight: 20,
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
               <Ionicons name="play-forward" size={24} color="white" />
             </TouchableOpacity>
           </View>

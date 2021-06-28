@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import PodcastCarousel from "../CustomList/PodcastCarousel";
 import { LinearGradient } from "expo-linear-gradient";
 import PopularRadiosList from "../CustomList/PopularRadiosList";
+import MotivationList from "../CustomList/MotivationList";
 
 const Podcast = (props) => {
   return (
@@ -26,6 +27,7 @@ const Podcast = (props) => {
       </Text>
       <PodcastCarousel />
       <PopularRadiosList navigation={props.navigation} />
+      <MotivationList navigation={props.navigation} />
     </LinearGradient>
   );
 };

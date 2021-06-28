@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,35 @@ import {
   Button,
   TouchableOpacity,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { auth, db } from "../Config";
+import firebase from "firebase";
 
 const SignUp = (props) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const register = () => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        authUser.user.updateProfile({
+          displayName: username,
+        });
+        db.collection("users").doc(auth.currentUser.uid).set({
+          name: username,
+          email: email,
+          imgUrl: "",
+          phone: "",
+        });
+        props.navigation.navigate("HomeScreen");
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
@@ -18,25 +43,37 @@ const SignUp = (props) => {
         source={{ uri: "https://i.imgur.com/pflrJZ2.jpg" }}
         style={styles.background}
       >
-        <TextInput
-          style={styles.inputuser}
-          placeholder="Username"
-          placeholderTextColor="yellow"
-        />
-        <TextInput
-          style={styles.inputemail}
-          placeholder="Email"
-          placeholderTextColor="yellow"
-        />
-        <TextInput
-          style={styles.inputpass}
-          placeholder="Password"
-          placeholderTextColor="yellow"
-        />
-        <TouchableOpacity
-          onPress={() => props.navigation.replace("HomeScreen")}
-          style={styles.button}
+        <View
+          style={{
+            height: "60%",
+            width: "100%",
+            alignItems: "center",
+            marginTop: 100,
+          }}
         >
+          <TextInput
+            style={styles.inputuser}
+            placeholder="Username"
+            placeholderTextColor="yellow"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+          />
+          <TextInput
+            style={styles.inputemail}
+            placeholder="Email"
+            placeholderTextColor="yellow"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.inputpass}
+            placeholder="Password"
+            placeholderTextColor="yellow"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+        <TouchableOpacity onPress={register} style={styles.button}>
           <View>
             <Text style={{ fontSize: 20, fontWeight: "700" }}>SignUp</Text>
           </View>
@@ -51,14 +88,15 @@ export default SignUp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
+    width: "100%",
+    height: "100%",
+    backgroundColor: "white",
+    paddingTop: 0,
   },
   background: {
     width: "100%",
     height: "100%",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
   },
   inputuser: {
@@ -94,6 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
-    marginTop: 270,
+    marginTop: 0,
+    marginBottom: 50,
   },
 });

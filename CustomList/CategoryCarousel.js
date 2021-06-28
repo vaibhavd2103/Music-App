@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { ImageBackground } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { TouchableOpacity } from "react-native";
+import axios from "axios";
 
 const CategoryCarousel = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
@@ -297,6 +298,9 @@ const CategoryCarousel = ({ navigation }) => {
       ],
     },
   ]);
+
+  const [songdata, setSongdata] = useState([]);
+
   return (
     <View style={styles.container}>
       <Carousel

@@ -74,8 +74,8 @@ export default function PopularRadiosList(props) {
               <Surface style={styles.surface}>
                 <View
                   style={{
-                    width: 125,
-                    height: 125,
+                    width: 105,
+                    height: 105,
                     elevation: 20,
                     backgroundColor: "white",
                     borderRadius: 200,
@@ -91,8 +91,8 @@ export default function PopularRadiosList(props) {
                   <ImageBackground
                     imageStyle={{ borderRadius: 200 }}
                     style={{
-                      width: 120,
-                      height: 120,
+                      width: 100,
+                      height: 100,
                       justifyContent: "flex-end",
                       padding: 7,
                     }}
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   surface: {
-    width: 130,
+    width: 120,
     padding: 5,
     backgroundColor: "transparent",
     margin: 3,

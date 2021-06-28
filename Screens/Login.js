@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,9 +8,35 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  ActivityIndicator,
 } from "react-native";
+import { auth, db } from "../Config";
 
 const Login = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        props.navigation.navigate("HomeScreen");
+      } else {
+        console.log("No User");
+      }
+    });
+    return unsub;
+  }, []);
+
+  const login = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        props.navigation.navigate("HomeScreen");
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -22,19 +48,20 @@ const Login = (props) => {
           source={require("../assets/welcome.png")}
         />
         <TextInput
-          placeholder="Email"
           style={styles.inputemail}
+          placeholder="Email"
           placeholderTextColor="yellow"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
-          placeholder="Password"
           style={styles.inputpassword}
+          placeholder="Password"
           placeholderTextColor="yellow"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
         />
-        <TouchableOpacity
-          onPress={() => props.navigation.replace("HomeScreen")}
-          style={styles.button}
-        >
+        <TouchableOpacity onPress={login} style={styles.button}>
           <View>
             <Text style={{ fontSize: 20, fontWeight: "700" }}>Login</Text>
           </View>

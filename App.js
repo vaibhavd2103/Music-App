@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -32,10 +32,23 @@ import Updates from "./Settings/HelpAndSupport/Updates";
 import MusicPlayer from "./Screens/MusicPlayer";
 import MusicCatogList from "./Screens/MusicCatogList";
 import CategoryCarousel from "./CustomList/CategoryCarousel";
+import { auth } from "./Config";
 
 const Stack = createStackNavigator();
 
-export default function App() {
+export default function App(props) {
+  const [initial, setInitial] = useState("Login");
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+      } else {
+        console.log("No User");
+      }
+    });
+    return unsub;
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
