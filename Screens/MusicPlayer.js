@@ -22,7 +22,8 @@ const MusicPlayer = ({ navigation, route }) => {
   async function playSound() {
     console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
-      require("../assets/minimal.mp3")
+      { uri: item.track.album.href }
+      // require("../assets/minimal.mp3")
     );
 
     setSound(sound);
@@ -47,7 +48,7 @@ const MusicPlayer = ({ navigation, route }) => {
       setStatus("pause"), playSound();
     } else {
       setStatus("play"), console.log("Unloading Sound");
-      sound.pauseAsync();
+      sound.stopAsync();
     }
   };
 
@@ -57,7 +58,7 @@ const MusicPlayer = ({ navigation, route }) => {
     <View style={styles.container}>
       <ImageBackground
         style={styles.imgBackground}
-        source={item.img}
+        source={{ uri: item.track.album.images[0].url }}
         blurRadius={10}
       >
         {/* -------------------------------------------------Header -------------------------------------- */}
@@ -99,20 +100,23 @@ const MusicPlayer = ({ navigation, route }) => {
         {/* ------------------------------------------------- Mid Section -------------------------------------- */}
         <View style={{ height: "70%", width: "100%", alignItems: "center" }}>
           <View style={styles.imagebackview}>
-            <Image source={item.img} style={styles.image} />
+            <Image
+              source={{ uri: item.track.album.images[0].url }}
+              style={styles.image}
+            />
           </View>
           <View style={styles.songnamesec}>
             {/* ------------------------------------------------- Song name -------------------------------------- */}
-            <View>
+            <View style={{ width: "90%" }}>
               <Text
                 style={{ color: "white", fontSize: 24, fontWeight: "bold" }}
               >
-                {item.name}
+                {item.track.name}
               </Text>
               <Text
                 style={{ color: "white", fontSize: 18, fontWeight: "normal" }}
               >
-                {item.artist}
+                {item.track.artists[0].name}
               </Text>
             </View>
             {/**Icon */}
@@ -221,6 +225,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
+    marginTop: 20,
   },
   imgBackground: {
     flex: 1,

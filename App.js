@@ -33,6 +33,7 @@ import MusicPlayer from "./Screens/MusicPlayer";
 import MusicCatogList from "./Screens/MusicCatogList";
 import CategoryCarousel from "./CustomList/CategoryCarousel";
 import { auth } from "./Config";
+import SongList from "./Screens/SongList";
 
 const Stack = createStackNavigator();
 
@@ -160,6 +161,13 @@ export default function App(props) {
         <Stack.Screen
           name="CategoryCarousel"
           component={CategoryCarousel}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SongList"
+          component={SongList}
           options={{
             headerShown: false,
           }}

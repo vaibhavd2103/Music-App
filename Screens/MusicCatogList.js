@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TouchableOpacity, ImageBackground } from "react-native";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { FlatList } from "react-native";
+import axios from "axios";
+import { Credentials } from "./Credentials";
 
 const MusicCatogList = ({ navigation, route }) => {
-  const { item } = route.params;
+  const [playlist, setPlaylist] = useState([]);
+  useEffect(() => {
+    axios(`https://api.spotify.com/v1/browse/categories/${item.id}/playlists`, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+    }).then((playlistResponse) => {
+      // console.log(playlistResponse.data.playlists.items);
+      setPlaylist(playlistResponse.data.playlists.items);
+    });
+  }, []);
+  const { item, token } = route.params;
   return (
     <View style={styles.container}>
-      {/*item.list.map((item) => (
-        <View key={item.id}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("MusicPlayer", { item })}
-          >
-            <Text>{item.name}</Text>
-          </TouchableOpacity>
-        </View>
-      ))*/}
       <ImageBackground
-        source={item.img}
+        source={{ uri: item.icons[0].url }}
         style={{
           flex: 1,
           alignItems: "center",
           opacity: 1,
           justifyContent: "space-between",
+          width: "100%",
         }}
-        blurRadius={5}
+        blurRadius={1}
       >
         <View
           style={{
@@ -46,12 +50,14 @@ const MusicCatogList = ({ navigation, route }) => {
         </View>
         <View style={styles.songbg}>
           <FlatList
-            data={item.list}
+            data={playlist}
             keyExtractor={(item) => item.id}
             renderItem={({ item, index }) => {
               return (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("MusicPlayer", { item })}
+                  onPress={() =>
+                    navigation.navigate("SongList", { item, token })
+                  }
                   style={styles.list}
                 >
                   <View
@@ -64,7 +70,7 @@ const MusicCatogList = ({ navigation, route }) => {
                   >
                     <View style={{ justifyContent: "center", padding: 10 }}>
                       <Image
-                        source={item.img}
+                        source={{ uri: item.images[0].url }}
                         style={{ height: 50, width: 50 }}
                       />
                     </View>
@@ -78,7 +84,7 @@ const MusicCatogList = ({ navigation, route }) => {
                       >
                         {item.name}
                       </Text>
-                      <Text
+                      {/* <Text
                         style={{
                           fontSize: 15,
                           fontWeight: "600",
@@ -86,7 +92,7 @@ const MusicCatogList = ({ navigation, route }) => {
                         }}
                       >
                         {item.artist}
-                      </Text>
+                      </Text> */}
                     </View>
                   </View>
                   <View
