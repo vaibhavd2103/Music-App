@@ -35,23 +35,23 @@ const Home = (props) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={["black", "black"]} style={styles.container}>
       <LinearGradient
-        colors={["orange", "yellow", "yellow", "orange"]}
+        colors={["transparent", "transparent", "transparent"]}
         start={{ x: 0, y: 1 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
       >
         <View style={{ width: "10%" }}>
           <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
-            <Feather name="menu" size={24} color="black" />
+            <Feather name="menu" size={24} color="white" />
           </TouchableOpacity>
         </View>
         <View style={{ width: "80%", alignItems: "center" }}>
           <Text
             style={{
               fontSize: 22,
-              color: "black",
+              color: "white",
               fontWeight: "bold",
               marginLeft: 10,
             }}
@@ -75,8 +75,10 @@ const Home = (props) => {
       </LinearGradient>
       <View style={styles.searchcontainer}>
         <View style={styles.searchbar}>
-          <View style={{ width: "90%", flexDirection: "row" }}>
-            <AntDesign name="search1" size={24} color="darkgrey" />
+          <View
+            style={{ width: "90%", flexDirection: "row", alignItems: "center" }}
+          >
+            <AntDesign name="search1" size={20} color="darkgrey" />
             <TextInput
               placeholder="Search"
               style={{ paddingLeft: 5, width: "80%" }}
@@ -85,69 +87,17 @@ const Home = (props) => {
           <View
             style={{ width: "10%", alignItems: "flex-end", paddingRight: 5 }}
           >
-            <MaterialIcons name="keyboard-voice" size={28} color="darkgrey" />
+            <MaterialIcons name="keyboard-voice" size={24} color="darkgrey" />
           </View>
         </View>
       </View>
       <ScrollView style={{ width: "100%" }}>
-        {/*<View style={{ width: "100%", height: 200 }}>
-          <View style={{ width: "100%", padding: 5 }}>
-            <Text
-              style={{
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              Recently Played
-            </Text>
-          </View>
-          <ScrollView style={{ width: "100%", height: 0 }} horizontal={true}>
-            <MusicName name="Dil mere" artist="Local train" />
-            <MusicName
-              name="Dusk till down"
-              artist="Zyan"
-              albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
-            />
-            <MusicName name="Treat you better" artist="Zyan" />
-            <MusicName name="Zindagi" artist="Jubin Nautiyal" />
-            <MusicName name="Channa mereya" artist="Artist:ABC" />
-            <MusicName name="Tum mile" artist="Unknown" />
-          </ScrollView>
-        </View>
-        <View style={{ width: "100%", height: 200 }}>
-          <View style={{ width: "100%", padding: 5 }}>
-            <Text
-              style={{
-                fontSize: 18,
-                fontWeight: "bold",
-                color: "white",
-                textAlign: "left",
-              }}
-            >
-              Today's Pick
-            </Text>
-          </View>
-          <ScrollView style={{ width: "100%" }} horizontal={true}>
-            <MusicName name="Dil mere" artist="Local train" />
-            <MusicName
-              name="Dusk till down"
-              artist="Zyan"
-              albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
-            />
-            <MusicName name="Treat you better" artist="Zyan" />
-            <MusicName name="Zindagi" artist="Jubin Nautiyal" />
-            <MusicName name="Channa mereya" artist="Artist:ABC" />
-            <MusicName name="Tum mile" artist="Unknown" />
-          </ScrollView>
-        </View>*/}
         <CategoryCarousel navigation={props.navigation} />
         <RecentlyPlayed navigation={props.navigation} />
         <Trending navigation={props.navigation} />
         <TodaysPick navigation={props.navigation} />
       </ScrollView>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -158,12 +108,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "black",
-    paddingTop: 40,
+    paddingTop: 30,
   },
   header: {
     width: "100%",
     height: 60,
-    backgroundColor: "yellow",
+    backgroundColor: "transparent",
     alignItems: "center",
     flexDirection: "row",
     paddingHorizontal: 10,
@@ -185,14 +135,3 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
 });
-
-{
-  /*<Modal
-          transparent={true}
-          animationType="fade"
-          visible={isvisible}
-          onRequestClose={() => changeModelVisible(false)}
-        >
-          <SearchModal />
-        </Modal>*/
-}

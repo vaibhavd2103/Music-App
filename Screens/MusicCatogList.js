@@ -16,6 +16,7 @@ const MusicCatogList = ({ navigation, route }) => {
       setPlaylist(playlistResponse.data.playlists.items);
     });
   }, []);
+
   const { item, token } = route.params;
   return (
     <View style={styles.container}>
@@ -28,7 +29,7 @@ const MusicCatogList = ({ navigation, route }) => {
           justifyContent: "space-between",
           width: "100%",
         }}
-        blurRadius={1}
+        blurRadius={10}
       >
         <View
           style={{
@@ -55,9 +56,10 @@ const MusicCatogList = ({ navigation, route }) => {
             renderItem={({ item, index }) => {
               return (
                 <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate("SongList", { item, token })
-                  }
+                  onPress={() => {
+                    navigation.navigate("SongList", { item, token });
+                    console.log(item.id);
+                  }}
                   style={styles.list}
                 >
                   <View

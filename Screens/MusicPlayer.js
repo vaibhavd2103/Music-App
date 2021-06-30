@@ -15,14 +15,45 @@ import {
 } from "react-native-vector-icons";
 import Slider from "@react-native-community/slider";
 import { Audio } from "expo-av";
+import { Credentials } from "./Credentials";
+import axios from "axios";
+import base64 from "react-native-base64";
 
 const MusicPlayer = ({ navigation, route }) => {
+  const spotify = Credentials();
+
+  const [track, setTrack] = useState();
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    axios("https://accounts.spotify.com/api/token", {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization:
+          "Basic " +
+          base64.encode(spotify.ClientId + ":" + spotify.ClientSecret),
+      },
+      data: "grant_type=client_credentials",
+      method: "POST",
+    }).then((tokenResponse) => {
+      setToken(tokenResponse.data.access_token);
+
+      axios(`https://api.spotify.com/v1/tracks/${item.track.id}`, {
+        method: "GET",
+        headers: { Authorization: "Bearer " + tokenResponse.data.access_token },
+      }).then((trackresponse) => {
+        console.log(JSON.stringify(trackresponse.data.uri));
+        setTrack(JSON.stringify(trackresponse.data.uri));
+      });
+    });
+  }, [spotify.ClientId, spotify.ClientSecret]);
+
   const [sound, setSound] = useState();
 
   async function playSound() {
     console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
-      { uri: item.track.album.href }
+      { uri: track }
       // require("../assets/minimal.mp3")
     );
 

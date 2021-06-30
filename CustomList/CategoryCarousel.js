@@ -33,9 +33,11 @@ const CategoryCarousel = ({ navigation }) => {
     }).then((tokenResponse) => {
       setToken(tokenResponse.data.access_token);
 
-      axios("https://api.spotify.com/v1/browse/categories?locale=sv_US", {
+      axios("https://api.spotify.com/v1/browse/categories?locale=sv_IN", {
         method: "GET",
-        headers: { Authorization: "Bearer " + tokenResponse.data.access_token },
+        headers: {
+          Authorization: "Bearer " + tokenResponse.data.access_token,
+        },
       }).then((genreResponse) => {
         // console.log(genreResponse.data.categories.items);
         setGenres(genreResponse.data.categories.items);
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     height: 190,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "transparent",
   },
 });
 
