@@ -1,2 +1,3 @@
-![demoportomusicapp](https://user-images.githubusercontent.com/68508494/124384828-af862d00-dcf0-11eb-924a-65f0f1f26dd3.png)
+![UntitledMusic-App(Portfolio)](https://user-images.githubusercontent.com/68508494/124393142-c0e23000-dd16-11eb-96f2-f41849645fb6.png)
+
 A music application whose front-end is being made with React-Native, managed songs and app with Spotify-API and back-end is handled with Firebase.
