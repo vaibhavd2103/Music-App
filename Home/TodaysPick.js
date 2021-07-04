@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ImageBackground } from "react-native";
 import { TouchableOpacity } from "react-native";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { Text, View, StyleSheet, FlatList, Linking } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 import { AntDesign } from "react-native-vector-icons";
@@ -73,7 +73,8 @@ export default function TodaysPick({ navigation }) {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("MusicPlayer", { item });
+                // navigation.navigate("MusicPlayer", { item });
+                Linking.openURL(item.track.external_urls.spotify);
               }}
             >
               <Surface style={styles.surface}>

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  Linking
 } from "react-native";
 import axios from "axios";
 import { StatusBar } from "expo-status-bar";
@@ -63,7 +64,11 @@ const SongList = ({ navigation, route }) => {
                     paddingLeft: 10,
                     borderRadius: 10,
                   }}
-                  onPress={() => navigation.navigate("MusicPlayer", { item })}
+                  onPress={() => {
+                    console.log(item.track.external_urls);  
+                    // navigation.navigate("MusicPlayer", { item })
+                    Linking.openURL(item.track.external_urls.spotify);
+                  }}
                 >
                   <View style={{ width: "15%" }}>
                     <Image

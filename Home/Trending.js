@@ -8,6 +8,7 @@ import { AntDesign } from "react-native-vector-icons";
 import axios from "axios";
 import { Credentials } from "../Screens/Credentials";
 import base64 from "react-native-base64";
+import { Linking } from "react-native";
 
 export default function Trending({ navigation }) {
   const [playlist, setPlaylist] = useState([]);
@@ -73,7 +74,8 @@ export default function Trending({ navigation }) {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("MusicPlayer", { item });
+                // navigation.navigate("MusicPlayer", { item });
+                Linking.openURL(item.track.external_urls.spotify);
               }}
             >
               <Surface style={styles.surface}>

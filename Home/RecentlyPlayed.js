@@ -15,6 +15,7 @@ import axios from "axios";
 import { Credentials } from "../Screens/Credentials";
 import base64 from "react-native-base64";
 import LottieView from "lottie-react-native";
+import { Linking } from "react-native";
 
 export default function RecentlyPlayed({ navigation }) {
   const [loading, setLoading] = useState(true);
@@ -101,7 +102,8 @@ export default function RecentlyPlayed({ navigation }) {
             return (
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("MusicPlayer", { item });
+                  // navigation.navigate("MusicPlayer", { item });
+                  Linking.openURL(item.track.external_urls.spotify);
                 }}
               >
                 <Surface style={styles.surface}>

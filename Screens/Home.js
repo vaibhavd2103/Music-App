@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "black",
-    paddingTop: 30,
+    paddingTop: 0,
   },
   header: {
     width: "100%",
